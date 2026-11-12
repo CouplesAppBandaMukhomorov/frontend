@@ -25,6 +25,9 @@ export const colors = createThemeContract({
     primaryHover: null,
     text: null,
     pinkText: null,
+    outlineText: null,
+    outlineBorder: null,
+    outlineHover: null,
   },
 
   status: {

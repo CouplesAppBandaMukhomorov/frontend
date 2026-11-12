@@ -35,6 +35,9 @@ export const themeClass = createTheme({
     primaryHover: '#D72AA6',
     text: '#FFFFFF',
     pinkText: '#EB016C',
+    outlineText: '#EB016C',
+    outlineBorder: '#EA006B',
+    outlineHover: '#FDF0F7',
   },
 
   status: {
@@ -53,7 +56,7 @@ export const themeClass = createTheme({
   },
 
   fontFamily: {
-    base: 'Arial, sans-serif',
+    base: "'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
   },
 
   fontSize: {
