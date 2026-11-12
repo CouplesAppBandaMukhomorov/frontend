@@ -30,7 +30,9 @@ const Register = () => {
             <Flex className={authPageMargin} vertical>
                 <Button className={outlinedButton} onClick={handleBackClick} color="primary" variant="outlined" size="large" shape="round" icon={<ArrowLeftOutlined />} />
                 <section>
-                    <Title>{t('register.title')}</Title>
+                    <Flex justify="center">
+                        <Title style={{ fontSize: '32px', fontWeight: '700' }}>{t('register.title')}</Title>
+                    </Flex>
                     <Form.Item layout="vertical" label={t('register.fields.name.label')} name='name' style={{ marginBottom: '16px'}}>
                         <Input className={input} variant="outlined" placeholder={t('register.fields.name.placeholder')} />
                     </Form.Item>

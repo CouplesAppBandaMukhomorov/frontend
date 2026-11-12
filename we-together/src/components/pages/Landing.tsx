@@ -23,7 +23,7 @@ const Landing = () => {
     return (
         <div className={page}>
             <Background page="landing" />
-            <Flex className={margin} vertical align="center" gap={48}>
+            <Flex className={margin} vertical justify="center" align="center" gap={48} style={{ minHeight: '100vh' }}>
                 <img width={310} src={logo} alt={t('together')}></img>
                 <section className="list">
                     <h2 className={listText}>{t('landing.title')}</h2>

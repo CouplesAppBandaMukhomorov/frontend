@@ -17,7 +17,7 @@ export const listText = style({
 })
 
 export const margin = style({
-    marginTop: '124px',
+    // marginTop: '124px',
     marginLeft: '32px',
     marginRight: '32px',
 })
