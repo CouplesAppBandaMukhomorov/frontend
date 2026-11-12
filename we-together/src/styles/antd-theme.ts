@@ -5,6 +5,9 @@ export const antdTheme = {
   algorithm: theme.defaultAlgorithm,
 
   token: {
+    colorLink: '#EA006B',
+    colorLinkHover: '#c20059',
+
     colorPrimary: colors.button.primary,
     colorSuccess: colors.status.success,
     colorError: colors.status.error,

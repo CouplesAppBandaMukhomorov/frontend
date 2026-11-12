@@ -1,14 +1,29 @@
-import { background, ellipse1, ellipse2, ellipse3, ellipse4 } from "../styles/components-styles/background.css";
+import { background, ellipseYellowTopLanding, ellipsePurpleTopLanding, ellipseRedBottomLanding, ellipseYellowBottomLanding, ellipseYellowTopAuth, ellipsePurpleBottomAuth, ellipseRedBottomAuth, ellipseYellowBottomAuth } from "../styles/components-styles/background.css";
 
-const Background = () => {
-    return (
-        <div className={background}>
-            <div className={ellipse1} />
-            <div className={ellipse2} />
-            <div className={ellipse3} />
-            <div className={ellipse4} />
-        </div>
-    )
+type PageProps = {
+    page: 'landing' | 'auth';
+}
+
+const Background = ({ page }: PageProps) => {
+    if (page === 'landing') {
+        return (
+            <div className={background}>
+                <div className={ellipseYellowTopLanding} />
+                <div className={ellipsePurpleTopLanding} />
+                <div className={ellipseRedBottomLanding} />
+                <div className={ellipseYellowBottomLanding} />
+            </div>
+        )          
+    } else if (page === 'auth') {
+        return (
+            <div className={background}>
+                <div className={ellipseYellowTopAuth} />
+                <div className={ellipsePurpleBottomAuth} />
+                <div className={ellipseRedBottomAuth} />
+                <div className={ellipseYellowBottomAuth} />
+            </div>
+        ) 
+    }
 }
 
 export default Background;

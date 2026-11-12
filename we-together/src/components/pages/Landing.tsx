@@ -5,13 +5,24 @@ import logo from '../../assets/logo.svg';
 import { customList, listText, margin } from "../../styles/components-styles/custom-list.css";
 import Background from "../Background";
 import { page } from "../../styles/components-styles/background.css";
+import { useNavigate } from "react-router";
 
 const Landing = () => {
     const { t } = useTranslation('common');
+
+    const navigate = useNavigate();
+
+    const handleRegisterClick = () => {
+        navigate('/register');
+    }
+
+    const handleLoginClick = () => {
+        navigate('/login');
+    }
     
     return (
         <div className={page}>
-            <Background />
+            <Background page="landing" />
             <Flex className={margin} vertical align="center" gap={48}>
                 <img width={310} src={logo} alt={t('together')}></img>
                 <section className="list">
@@ -23,8 +34,8 @@ const Landing = () => {
                     </ul>
                 </section>
                 <Flex className="buttons" style={{width: '100%'}} vertical gap={16}>
-                    <Button className={filledButton} color="primary" variant="filled" size="large" shape="round">{t('login')}</Button>
-                    <Button className={outlinedButton} color="primary" variant="outlined" size="large" shape="round">{t('register')}</Button>
+                    <Button className={filledButton} onClick={handleLoginClick} color="primary" variant="filled" size="large" shape="round">{t('login')}</Button>
+                    <Button className={outlinedButton} onClick={handleRegisterClick} color="primary" variant="outlined" size="large" shape="round">{t('register')}</Button>
                 </Flex>
             </Flex>
         </div>

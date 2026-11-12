@@ -23,7 +23,7 @@ export const ellipse = style({
   flexShrink: 0,
 });
 
-export const ellipse1 = style([
+export const ellipseYellowTopLanding = style([
   ellipse,
   {
     width: '313px',
@@ -34,7 +34,18 @@ export const ellipse1 = style([
   },
 ]);
 
-export const ellipse2 = style([
+export const ellipseYellowTopAuth = style([
+    ellipse,
+    {
+        width: '465px',
+        height: '120px',
+        top: '-7px',
+        left: '61px',
+        background: '#FFCB3C99',
+    },
+]);
+
+export const ellipsePurpleTopLanding = style([
   ellipse,
   {
     width: '319px',
@@ -45,7 +56,29 @@ export const ellipse2 = style([
   },
 ]);
 
-export const ellipse3 = style([
+export const ellipsePurpleBottomAuth = style([
+    ellipse,
+    {
+        width: '420px',
+        height: '339px',
+        top: '503px',
+        left: '101px',
+        background: '#DD95F34D',
+    },
+]);
+
+export const ellipseRedBottomAuth = style([
+    ellipse,
+    {
+        width: '76px',
+        height: '121px',
+        top: '704px',
+        left: '-6px',
+        background: '#FF0D00B2',
+    }
+]);
+
+export const ellipseRedBottomLanding = style([
   ellipse,
   {
     width: '76px',
@@ -56,7 +89,18 @@ export const ellipse3 = style([
   },
 ]);
 
-export const ellipse4 = style([
+export const ellipseYellowBottomAuth = style([
+    ellipse,
+    {
+        width: '342px',
+        height: '132px',
+        top: '746px',
+        left: '91px',
+        background: '#FFCB3C33',
+    },
+]);
+
+export const ellipseYellowBottomLanding = style([
   ellipse,
   {
     width: '342px',
