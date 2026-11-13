@@ -30,9 +30,15 @@ export const colors = createThemeContract({
     outlineHover: null,
   },
 
+  link: {
+    primary: null,
+    hover: null,
+  },
+
   status: {
     success: null,
     error: null,
+    errorHover: null,
     warning: null,
   },
 

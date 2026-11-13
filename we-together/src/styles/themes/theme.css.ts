@@ -1,6 +1,7 @@
 import { createTheme } from '@vanilla-extract/css';
 
 import { colors } from '../tokens/colors.css';
+import { colorValues } from '../tokens/color-values';
 import { typography } from '../tokens/typography.css';
 import { spacing } from '../tokens/spacing.css';
 import { borders } from '../tokens/borders.css';
@@ -11,49 +12,7 @@ export const themeClass = createTheme({
   ...spacing,
   ...borders,
 }, {
-  background: {
-    primary: '#FFFFFF',
-    secondary: '#F5F5F7',
-  },
-
-  text: {
-    primary: '#292936',
-    secondary: '#777780',
-    disabled: '#B5B5B5',
-    inverse: '#FFFFFF',
-  },
-
-  border: {
-    primary: '#E5E5E5',
-    secondary: '#EA006B',
-    error: '#FF4D4F',
-    focus: '#E83BB7',
-  },
-
-  button: {
-    primary: '#E83BB7',
-    primaryHover: '#D72AA6',
-    text: '#FFFFFF',
-    pinkText: '#EB016C',
-    outlineText: '#EB016C',
-    outlineBorder: '#EA006B',
-    outlineHover: '#FDF0F7',
-  },
-
-  status: {
-    success: '#36A76A',
-    error: '#FF4D4F',
-    warning: '#F5A623',
-  },
-
-  gradient: {
-    background: 'radial-gradient(66.72% 430.1% at 66.72% 49.67%, #EA006B 0%, #DD95F3 90.38%)',
-    primary: 'linear-gradient(90deg, #D98AF0, #EB35B8)',
-  },
-
-  boxShadow: {
-    primary: '#29293533'
-  },
+  ...colorValues,
 
   fontFamily: {
     base: "'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",

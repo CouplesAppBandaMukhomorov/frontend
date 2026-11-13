@@ -1,25 +1,25 @@
 import { theme } from 'antd';
-import { colors } from './tokens/colors.css';
+import { colorValues } from './tokens/color-values';
 
 export const antdTheme = {
   algorithm: theme.defaultAlgorithm,
 
   token: {
-    colorLink: '#EA006B',
-    colorLinkHover: '#c20059',
+    colorLink: colorValues.link.primary,
+    colorLinkHover: colorValues.link.hover,
 
-    colorPrimary: colors.button.primary,
-    colorSuccess: colors.status.success,
-    colorError: colors.status.error,
-    colorWarning: colors.status.warning,
+    colorPrimary: colorValues.button.primary,
+    colorSuccess: colorValues.status.success,
+    colorError: colorValues.status.error,
+    colorWarning: colorValues.status.warning,
 
-    colorText: colors.text.primary,
-    colorTextSecondary: colors.text.secondary,
+    colorText: colorValues.text.primary,
+    colorTextSecondary: colorValues.text.secondary,
 
-    colorBgBase: colors.background.primary,
-    colorBgContainer: colors.background.primary,
+    colorBgBase: colorValues.background.primary,
+    colorBgContainer: colorValues.background.primary,
 
-    colorBorder: colors.border.primary,
+    colorBorder: colorValues.border.primary,
 
     borderRadius: 8,
     fontFamily: "'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
@@ -27,17 +27,17 @@ export const antdTheme = {
 
   components: {
     Button: {
-        // Основная кнопка
-        colorPrimary: colors.button.primary,
-        colorPrimaryHover: colors.button.primaryHover,
-        colorTextLightSolid: colors.button.text,
+      // Основная кнопка
+      colorPrimary: colorValues.button.primary,
+      colorPrimaryHover: colorValues.button.primaryHover,
+      colorTextLightSolid: colorValues.button.text,
 
-        // Outline-кнопка
-        defaultColor: colors.button.pinkText,
-        defaultBorderColor: colors.button.outlineBorder,
-        defaultHoverColor: colors.button.outlineText,
-        defaultHoverBorderColor: colors.button.outlineBorder,
-        defaultHoverBg: colors.button.outlineHover,
+      // Outline-кнопка
+      defaultColor: colorValues.button.pinkText,
+      defaultBorderColor: colorValues.button.outlineBorder,
+      defaultHoverColor: colorValues.button.outlineText,
+      defaultHoverBorderColor: colorValues.button.outlineBorder,
+      defaultHoverBg: colorValues.button.outlineHover,
     },
   },
 };
