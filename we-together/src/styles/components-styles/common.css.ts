@@ -29,3 +29,20 @@ export const link = style({
     textDecoration: 'underline',
     textDecorationColor: colors.link.primary,
 })
+
+export const footer = style({
+    height: '64px',
+    minHeight: '64px',
+    width: '100%',
+    background: '#FDC4E7',
+    borderTopRightRadius: '16px',
+    borderTopLeftRadius: '16px',
+
+    position: 'fixed',
+    bottom: '0',
+    left: '0',
+
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+});

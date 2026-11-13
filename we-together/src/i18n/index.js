@@ -4,6 +4,7 @@ import { initReactI18next } from 'react-i18next';
 import common from './locales/ru/common.json';
 import auth from './locales/ru/auth.json';
 import profile from './locales/ru/profile.json';
+import cloud from './locales/ru/cloud.json';
 
 i18n
   .use(initReactI18next)
@@ -13,6 +14,7 @@ i18n
         common,
         auth,
         profile,
+        cloud,
       },
     },
 

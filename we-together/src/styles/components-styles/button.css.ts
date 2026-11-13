@@ -75,3 +75,10 @@ export const outlinedButton = style({
     },
   },
 });
+
+export const footerProfileButton = style([
+  outlinedButton,
+  {
+    alignSelf: 'center',
+  },
+]);
