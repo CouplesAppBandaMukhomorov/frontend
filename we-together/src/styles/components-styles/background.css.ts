@@ -37,12 +37,34 @@ export const ellipseYellowTopLanding = style([
 export const ellipseYellowTopAuth = style([
     ellipse,
     {
-        width: '465px',
-        height: '120px',
-        top: '-7px',
-        left: '61px',
-        background: '#FFCB3C99',
+      width: '465px',
+      height: '120px',
+      top: '-7px',
+      left: '61px',
+      background: '#FFCB3C99',
     },
+]);
+
+export const ellipseYellowTopCloudCreation = style([
+  ellipse,
+  {
+    width: '465px',
+    height: '120px',
+    top: '-45px',
+    left: '46px',
+    background: '#FFCB3C99',
+  }
+]);
+
+export const ellipseYellowBottomCloudCreation = style([
+  ellipse,
+  {
+    width: '342px',
+    height: '234px',
+    top: '663px',
+    left: '-108px',
+    background: '#FFCB3C99',
+  }
 ]);
 
 export const ellipsePurpleTopLanding = style([

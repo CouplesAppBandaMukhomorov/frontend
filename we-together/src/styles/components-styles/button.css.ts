@@ -82,3 +82,14 @@ export const footerProfileButton = style([
     alignSelf: 'center',
   },
 ]);
+
+export const iconButton = style({
+  border: 'none',
+  background: 'transparent',
+  
+  selectors: {
+    '&:hover': {
+      cursor: 'pointer'
+    }
+  }
+});

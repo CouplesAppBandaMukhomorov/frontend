@@ -6,7 +6,8 @@ import Register from './components/pages/Register';
 import { ConfigProvider } from 'antd';
 import { antdTheme } from './styles/antd-theme';
 import { themeClass } from './styles/themes/theme.css';
-import CreateCloud from './components/pages/CreateCloud';
+import CloudActions from './components/pages/CloudActions';
+import CloudCreate from './components/pages/CloudCreate';
 
 function App() {
   return (
@@ -18,7 +19,9 @@ function App() {
             <Route path='/landing' element={<Landing />}/>
             <Route path='/login' element={<Login />}/>
             <Route path='/register' element={<Register />}/>
-            <Route path='/create-cloud' element={<CreateCloud />}/>
+            <Route path='/cloud/actions' element={<CloudActions />}/>
+            <Route path='/cloud/create' element={<CloudCreate />}/>
+            <Route path='/cloud/join' element={<h1>Присоединение к пространству</h1>}/>
           </Routes>
         </div>
       </ConfigProvider>

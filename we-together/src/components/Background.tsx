@@ -1,7 +1,7 @@
-import { background, ellipseYellowTopLanding, ellipsePurpleTopLanding, ellipseRedBottomLanding, ellipseYellowBottomLanding, ellipseYellowTopAuth, ellipsePurpleBottomAuth, ellipseRedBottomAuth, ellipseYellowBottomAuth } from "../styles/components-styles/background.css";
+import { background, ellipseYellowTopLanding, ellipsePurpleTopLanding, ellipseRedBottomLanding, ellipseYellowBottomLanding, ellipseYellowTopAuth, ellipsePurpleBottomAuth, ellipseRedBottomAuth, ellipseYellowBottomAuth, ellipseYellowTopCloudCreation, ellipseYellowBottomCloudCreation } from "../styles/components-styles/background.css";
 
 type PageProps = {
-    page: 'landing' | 'auth';
+    page: 'landing' | 'auth' | 'cloud-create';
 }
 
 const Background = ({ page }: PageProps) => {
@@ -23,6 +23,13 @@ const Background = ({ page }: PageProps) => {
                 <div className={ellipseYellowBottomAuth} />
             </div>
         ) 
+    } else if (page === 'cloud-create') {
+        return (
+            <div className={background}>
+                <div className={ellipseYellowTopCloudCreation} />
+                <div className={ellipseYellowBottomCloudCreation} />
+            </div>
+        )
     }
 }
 
