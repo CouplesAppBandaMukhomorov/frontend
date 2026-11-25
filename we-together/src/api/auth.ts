@@ -1,5 +1,5 @@
 
-const API_URL = "http://localhost:8000";
+const API_URL = (import.meta.env.VITE_API_URL || "http://localhost:8000").replace(/\/$/, "");
 
 // Данные для регистрации
 interface RegisterRequest {
@@ -119,9 +119,6 @@ async function authRequest(
     } catch {
         result = {};
     }
-
-    console.log("Auth status:", response.status);
-    console.log("Auth response:", result);
 
     if (!response.ok) {
         const errorData = result as ApiErrorResponse;

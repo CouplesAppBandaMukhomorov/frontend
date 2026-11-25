@@ -9,7 +9,7 @@ import Text from "antd/es/typography/Text";
 import Link from "antd/es/typography/Link";
 import { input, link } from "../../styles/components-styles/common.css";
 import { authPageMargin } from "../../styles/components-styles/auth.css";
-import { useNavigate } from "react-router";
+import { useNavigate, useSearchParams } from "react-router";
 import { useState } from "react";
 import { AuthError, register } from "../../api/auth";
 
@@ -26,9 +26,12 @@ const Register = () => {
 
     const { t } = useTranslation('auth');
     const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
+    const next = searchParams.get("next");
+    const returnTo = next?.startsWith("/") && !next.startsWith("//") ? next : null;
 
     const handleLoginClick = () => {
-        navigate('/login');
+        navigate(returnTo ? `/login?next=${encodeURIComponent(returnTo)}` : '/login');
     }
 
     const handleBackClick = () => {
@@ -57,8 +60,7 @@ const Register = () => {
                 data.refresh_token
             );
 
-            // Переходим на главную
-            navigate("/");
+            navigate(returnTo || '/cloud/actions', { replace: true });
 
         } catch (error: unknown) {
 

@@ -39,7 +39,7 @@ const CloudActions = () => {
                     </Flex>
                 </Flex>
             </Flex>
-            <Footer></Footer>
+            <Footer />
         </div>
     )
 }

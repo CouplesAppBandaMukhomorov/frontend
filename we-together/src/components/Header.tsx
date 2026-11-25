@@ -5,7 +5,11 @@ import logo from '../assets/logo.svg';
 import { useTranslation } from 'react-i18next';
 import { iconButton } from '../styles/components-styles/button.css';
 
-const Header = () => {
+type HeaderProps = {
+    type: 'back' | 'backLogo',
+};
+
+const Header = ({ type }: HeaderProps) => {
     const navigate = useNavigate();
 
     const { t } = useTranslation('common');
@@ -15,12 +19,23 @@ const Header = () => {
     }
 
     return (
-        <header className={header}>
-            <button onClick={handleClickProfile} className={iconButton}>
-                <ArrowLeftOutlined />
-            </button>
-            <img height={40} width={120} src={logo} alt={t('together')}></img>
-        </header>
+        <>
+            {type === 'backLogo' && (
+                <header className={header}>
+                    <button onClick={handleClickProfile} className={iconButton}>
+                        <ArrowLeftOutlined />
+                    </button>
+                    <img height={40} width={120} src={logo} alt={t('together')}></img>
+                </header>
+            )}
+            {type === 'back' && (
+                <header className={header}>
+                    <button onClick={handleClickProfile} className={iconButton}>
+                        <ArrowLeftOutlined />
+                    </button>
+                </header>
+            )}
+        </>
     );
 };
 

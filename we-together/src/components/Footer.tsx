@@ -1,18 +1,25 @@
 import { Button } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
-import { footer } from '../styles/components-styles/common.css';
+import { pinkFooter, yellowFooter } from '../styles/components-styles/common.css';
 import { footerProfileButton } from '../styles/components-styles/button.css';
-import { useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
+import type { CoupleRole } from '../api/createCloud';
 
-const Footer = () => {
+type FooterProps = {
+    role?: CoupleRole;
+}
+
+const Footer = ({ role }: FooterProps) => {
     const navigate = useNavigate();
+    const location = useLocation();
+    const isInvitee = role === 'invitee' || (!role && location.pathname === '/cloud/join');
 
     const handleProfileClick = () => {
         navigate('/profile');
     }
 
     return (
-        <footer className={footer}>
+        <footer className={isInvitee ? yellowFooter : pinkFooter}>
             <Button className={footerProfileButton} onClick={handleProfileClick} icon={<UserOutlined />} shape="circle" size="large" />
         </footer>
     );

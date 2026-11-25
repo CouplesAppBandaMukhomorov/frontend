@@ -8,6 +8,9 @@ import { antdTheme } from './styles/antd-theme';
 import { themeClass } from './styles/themes/theme.css';
 import CloudActions from './components/pages/CloudActions';
 import CloudCreate from './components/pages/CloudCreate';
+import LinkCloud from './components/pages/LinkCloud';
+import NoCoupleGuard from './components/NoCoupleGuard';
+import CoupleHome from './components/pages/CoupleHome';
 
 function App() {
   return (
@@ -15,13 +18,15 @@ function App() {
       <ConfigProvider theme={antdTheme}>
         <div className={themeClass}>
           <Routes>
-            <Route path='/' element={<>Главная</>}/>
+            <Route path='/' element={<CoupleHome />}/>
             <Route path='/landing' element={<Landing />}/>
             <Route path='/login' element={<Login />}/>
             <Route path='/register' element={<Register />}/>
-            <Route path='/cloud/actions' element={<CloudActions />}/>
-            <Route path='/cloud/create' element={<CloudCreate />}/>
-            <Route path='/cloud/join' element={<h1>Присоединение к пространству</h1>}/>
+            <Route element={<NoCoupleGuard />}>
+              <Route path='/cloud/actions' element={<CloudActions />}/>
+              <Route path='/cloud/create' element={<CloudCreate />}/>
+              <Route path='/cloud/join' element={<LinkCloud />}/>
+            </Route>
           </Routes>
         </div>
       </ConfigProvider>

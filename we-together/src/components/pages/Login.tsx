@@ -9,7 +9,7 @@ import Text from "antd/es/typography/Text";
 import Link from "antd/es/typography/Link";
 import { authPageMargin } from "../../styles/components-styles/auth.css";
 import { input, link } from "../../styles/components-styles/common.css";
-import { useNavigate } from "react-router";
+import { useNavigate, useSearchParams } from "react-router";
 import { useState } from "react";
 import { AuthError, login } from "../../api/auth";
 
@@ -27,9 +27,12 @@ const Login = () => {
     const { t } = useTranslation('auth');
 
     const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
+    const next = searchParams.get("next");
+    const returnTo = next?.startsWith("/") && !next.startsWith("//") ? next : "/";
 
     const handleRegisterClick = () => {
-        navigate('/register');
+        navigate(`/register?next=${encodeURIComponent(returnTo)}`);
     };
 
     const handleBackClick = () => {
@@ -49,7 +52,7 @@ const Login = () => {
             localStorage.setItem('access_token', data.access_token);
             localStorage.setItem('refresh_token', data.refresh_token);
 
-            navigate('/');
+            navigate(returnTo);
         } catch (error: unknown) {
             if (error instanceof AuthError) {
                 if (error.code === 'invalid_credential') {
