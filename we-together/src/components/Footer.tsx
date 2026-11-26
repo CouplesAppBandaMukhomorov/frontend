@@ -25,6 +25,7 @@ import {
 } from '../styles/components-styles/button.css';
 import { Link, useLocation, useNavigate } from 'react-router';
 import type { Couple, CoupleRole } from '../api/createCloud';
+import type { CoupleNavigationState } from '../state/coupleNavigation';
 import { getMyProfile } from '../api/users';
 import { getRememberedDisplayName, rememberRegisteredUser } from '../state/currentUser';
 
@@ -32,6 +33,7 @@ type FooterProps = {
     role?: CoupleRole;
     displayName?: string;
     members?: Couple['members'];
+    daysTogether?: number | null;
     withNavigation?: boolean;
 }
 
@@ -39,7 +41,7 @@ function firstLetter(name: string): string {
     return Array.from(name.trim())[0]?.toLocaleUpperCase('ru-RU') || '?';
 }
 
-const Footer = ({ role, displayName, members, withNavigation = false }: FooterProps) => {
+const Footer = ({ role, displayName, members, daysTogether, withNavigation = false }: FooterProps) => {
     const navigate = useNavigate();
     const location = useLocation();
     const isCalendarPage = location.pathname === '/calendar';
@@ -52,6 +54,7 @@ const Footer = ({ role, displayName, members, withNavigation = false }: FooterPr
     const invitee = members?.find(member => member.role === 'invitee');
     const creatorName = role === 'creator' ? name : creator?.display_name || '';
     const inviteeName = role === 'invitee' ? name : invitee?.display_name || '';
+    const navigationState: CoupleNavigationState = { role, members, daysTogether, displayName: name };
 
     useEffect(() => {
         let active = true;
@@ -68,11 +71,11 @@ const Footer = ({ role, displayName, members, withNavigation = false }: FooterPr
     }, []);
 
     const handleProfileClick = () => {
-        navigate('/profile');
+        navigate('/profile', { state: navigationState });
     }
 
     const profileLink = creator && invitee ? (
-                <Link to="/profile" className={footerCoupleLink} aria-label={`Профиль пары: ${creator.display_name} и ${invitee.display_name}`}>
+                <Link to="/profile" state={navigationState} className={footerCoupleLink} aria-label={`Профиль пары: ${creator.display_name} и ${invitee.display_name}`}>
                     <span className={isInvitee ? footerInviteeFrontCircle : footerCreatorFrontCircle}>
                         {firstLetter(isInvitee ? inviteeName : creatorName)}
                     </span>
@@ -95,13 +98,13 @@ const Footer = ({ role, displayName, members, withNavigation = false }: FooterPr
         <footer className={isInvitee ? yellowFooter : pinkFooter}>
             {withNavigation ? (
                 <nav className={spaceFooterNavigation} aria-label="Навигация по пространству">
-                    <Link to="/calendar" className={spaceFooterLink} aria-label="Календарь" aria-current={isCalendarPage ? 'page' : undefined}>
+                    <Link to="/calendar" state={navigationState} className={spaceFooterLink} aria-label="Календарь" aria-current={isCalendarPage ? 'page' : undefined}>
                         {isCalendarPage ? <CalendarFilled /> : <CalendarOutlined />}
                     </Link>
-                    <Link to="/" className={spaceFooterLink} aria-label="Главная" aria-current={isHomePage ? 'page' : undefined}>
+                    <Link to="/" state={navigationState} className={spaceFooterLink} aria-label="Главная" aria-current={isHomePage ? 'page' : undefined}>
                         {isHomePage ? <HomeFilled /> : <HomeOutlined />}
                     </Link>
-                    <Link to="/products" className={spaceFooterLink} aria-label="Продукты" aria-current={isProductsPage ? 'page' : undefined}>
+                    <Link to="/products" state={navigationState} className={spaceFooterLink} aria-label="Продукты" aria-current={isProductsPage ? 'page' : undefined}>
                         {isProductsPage ? <ProductFilled /> : <ProductOutlined />}
                     </Link>
                     <div className={spaceFooterProfileSlot}>{profileLink}</div>

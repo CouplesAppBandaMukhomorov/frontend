@@ -10,7 +10,7 @@ export interface Couple {
   timezone: string;
   days_together: number | null;
   my_role: CoupleRole;
-  members: { id: string; display_name: string; role: CoupleRole }[];
+  members: { id: string; display_name: string; role: CoupleRole; email?: string | null; birth_date?: string | null }[];
 }
 
 export interface CreateCloudSettings {

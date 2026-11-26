@@ -1,3 +1,17 @@
 {
-    "profile": "Профиль"
+    "profile": "Профиль",
+    "retry": "Повторить",
+    "settings": "Настройки профиля",
+    "emailLoading": "Почта загружается…",
+    "emailLoadError": "Не удалось загрузить почту",
+    "emailUnavailable": "Почта пока недоступна",
+    "relationshipStart": "Начало отношений",
+    "weddingDate": "Дата свадьбы",
+    "questionnaire": {
+        "me": "Моя анкета",
+        "partner": "Анкета партнера",
+        "couple": "Анкета пары",
+        "myPlaceholder": "Посмотреть и изменить анкету",
+        "partnerPlaceholder": "Посмотреть ответы партнера"
+    }
 }

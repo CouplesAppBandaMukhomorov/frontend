@@ -11,6 +11,8 @@ import CloudCreate from './components/pages/CloudCreate';
 import LinkCloud from './components/pages/LinkCloud';
 import NoCoupleGuard from './components/NoCoupleGuard';
 import CoupleHome from './components/pages/CoupleHome';
+import Profile from './components/pages/Profile';
+import ProfileSettings from './components/pages/ProfileSettings';
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
             <Route path='/' element={<CoupleHome />}/>
             <Route path='/calendar' element={<CoupleHome section='calendar' />}/>
             <Route path='/products' element={<CoupleHome section='products' />}/>
+            <Route path='/profile' element={<Profile />}/>
+            <Route path='/profile/settings' element={<ProfileSettings />}/>
             <Route path='/landing' element={<Landing />}/>
             <Route path='/login' element={<Login />}/>
             <Route path='/register' element={<Register />}/>
