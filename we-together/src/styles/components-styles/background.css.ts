@@ -45,7 +45,7 @@ export const ellipseYellowTopAuth = style([
     },
 ]);
 
-export const ellipseYellowTopCloudCreation = style([
+export const ellipseYellowTopCreator = style([
   ellipse,
   {
     width: '465px',
@@ -56,7 +56,7 @@ export const ellipseYellowTopCloudCreation = style([
   }
 ]);
 
-export const ellipseYellowBottomCloudCreation = style([
+export const ellipseYellowBottomCreator = style([
   ellipse,
   {
     width: '342px',
@@ -64,6 +64,28 @@ export const ellipseYellowBottomCloudCreation = style([
     top: '663px',
     left: '-108px',
     background: '#FFCB3C99',
+  }
+]);
+
+export const ellipsePinkTopInvitee = style([
+  ellipse,
+  {
+    width: '465px',
+    height: '120px',
+    top: '-45px',
+    left: '46px',
+    background: '#FFE1F3',
+  }
+]);
+
+export const ellipsePinkBottomInvitee = style([
+  ellipse,
+  {
+    width: '342px',
+    height: '234px',
+    top: '663px',
+    left: '-108px',
+    background: '#FFE1F3',
   }
 ]);
 

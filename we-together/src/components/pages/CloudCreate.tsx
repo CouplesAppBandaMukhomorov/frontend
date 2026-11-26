@@ -7,7 +7,7 @@ import type { Dayjs } from "dayjs";
 import Title from "antd/es/typography/Title";
 import Text from "antd/es/typography/Text";
 import { createCloud } from "../../api/createCloud";
-import type { CoupleRole } from "../../api/createCloud";
+import type { Couple, CoupleRole } from "../../api/createCloud";
 import { ApiError, getCloudError } from "../../api/client";
 import { createInvitation } from "../../api/invitation";
 import { filledButton, outlinedButton } from "../../styles/components-styles/button.css";
@@ -34,6 +34,8 @@ const CloudCreate = () => {
   const [loading, setLoading] = useState(false);
   const [created, setCreated] = useState(false);
   const [createdRole, setCreatedRole] = useState<CoupleRole>();
+  const [createdName, setCreatedName] = useState<string>();
+  const [createdMembers, setCreatedMembers] = useState<Couple["members"]>();
   const [invitationCode, setInvitationCode] = useState("");
   const [error, setError] = useState("");
 
@@ -49,6 +51,8 @@ const CloudCreate = () => {
         timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC",
       });
       setCreatedRole(couple.my_role);
+      setCreatedName(couple.members.find(member => member.role === couple.my_role)?.display_name);
+      setCreatedMembers(couple.members);
       setCreated(true);
       const invitation = await createInvitation();
       setInvitationCode(invitation.code);
@@ -109,7 +113,7 @@ const CloudCreate = () => {
 
   return (
     <div className={page}>
-      <Background page="cloud-create" />
+      <Background page={createdRole ?? "creator"} />
       <Header type="backLogo" />
       <div className={cloudPage}>
         <Flex vertical gap={10}>
@@ -159,7 +163,7 @@ const CloudCreate = () => {
           )}
         </Flex>
       </div>
-      <Footer role={createdRole} />
+      <Footer role={createdRole} displayName={createdName} members={createdMembers} />
     </div>
   );
 };

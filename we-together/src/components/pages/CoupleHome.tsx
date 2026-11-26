@@ -70,7 +70,7 @@ const CoupleHome = () => {
 
   return (
     <div className={page}>
-      <Background page="cloud-create" />
+      <Background page={couple.my_role} />
       <Flex vertical align="center" justify="center" gap={16} style={{ minHeight: "100vh", padding: "24px 16px 96px", textAlign: "center" }}>
         <Title level={1} style={{ margin: 0, fontSize: 28 }}>
           {second
@@ -83,7 +83,7 @@ const CoupleHome = () => {
           <Text style={{ fontSize: 20 }}>{t("home.daysTogether", { count: couple.days_together })}</Text>
         )}
       </Flex>
-      <Footer role={couple.my_role} />
+      <Footer role={couple.my_role} displayName={couple.members.find(member => member.role === couple.my_role)?.display_name} members={couple.members} />
     </div>
   );
 };

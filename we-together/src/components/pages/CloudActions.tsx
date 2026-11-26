@@ -25,7 +25,7 @@ const CloudActions = () => {
     
     return (
         <div className={page}>
-            <Background page="cloud-create" />
+            <Background page="creator" />
             <Flex className={margin} vertical justify="center" align="center" gap={32} style={{ minHeight: '100vh' }}>
                 <img width={310} src={logo} alt={t('together')}></img>
                 <Flex className="buttons" style={{width: '100%'}} vertical gap={48}>

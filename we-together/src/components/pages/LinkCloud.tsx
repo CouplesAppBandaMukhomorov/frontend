@@ -7,7 +7,7 @@ import Text from "antd/es/typography/Text";
 import { ApiError, getCloudError } from "../../api/client";
 import { acceptInvitation, getInvitation } from "../../api/invitation";
 import type { InvitationPreview } from "../../api/invitation";
-import type { CoupleRole } from "../../api/createCloud";
+import type { Couple, CoupleRole } from "../../api/createCloud";
 import { filledButton } from "../../styles/components-styles/button.css";
 import logo from "../../assets/logo.svg";
 import successImg from "../../assets/success.svg";
@@ -41,6 +41,8 @@ const LinkCloud = () => {
   const [preview, setPreview] = useState<InvitationPreview | null>(null);
   const [joined, setJoined] = useState(false);
   const [joinedRole, setJoinedRole] = useState<CoupleRole>();
+  const [joinedName, setJoinedName] = useState<string>();
+  const [joinedMembers, setJoinedMembers] = useState<Couple["members"]>();
 
   const handleError = (caught: unknown) => {
     if (caught instanceof ApiError && (caught.code === "invalid_token" || caught.code === "missing_token")) {
@@ -82,6 +84,8 @@ const LinkCloud = () => {
     try {
       const { couple } = await acceptInvitation(preview.code);
       setJoinedRole(couple.my_role);
+      setJoinedName(couple.members.find(member => member.role === couple.my_role)?.display_name);
+      setJoinedMembers(couple.members);
       setJoined(true);
       setPreview(null);
     } catch (caught: unknown) {
@@ -93,7 +97,7 @@ const LinkCloud = () => {
 
   return (
     <div className={page}>
-      <Background page="cloud-create" />
+      <Background page={joinedRole ?? "invitee"} />
       <Header type="back" />
       <Flex className={margin} vertical justify="center" align="center" gap={32} style={{ minHeight: "80vh" }}>
         <img width={310} src={logo} alt={t("together")} />
@@ -135,7 +139,7 @@ const LinkCloud = () => {
           </Flex>
         )}
       </Flex>
-      <Footer role={joinedRole} />
+      <Footer role={joinedRole} displayName={joinedName} members={joinedMembers} />
     </div>
   );
 };

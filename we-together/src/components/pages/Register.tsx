@@ -12,6 +12,7 @@ import { authPageMargin } from "../../styles/components-styles/auth.css";
 import { useNavigate, useSearchParams } from "react-router";
 import { useState } from "react";
 import { AuthError, register } from "../../api/auth";
+import { rememberRegisteredUser } from "../../state/currentUser";
 
 interface RegisterFormValues {
     name: string;
@@ -59,6 +60,7 @@ const Register = () => {
                 "refresh_token",
                 data.refresh_token
             );
+            rememberRegisteredUser(values.email, values.name);
 
             navigate(returnTo || '/cloud/actions', { replace: true });
 
@@ -116,6 +118,7 @@ const Register = () => {
                             rules={[
                                 {
                                     required: true,
+                                    whitespace: true,
                                     message: t('validation.required')
                                 }
                             ]}

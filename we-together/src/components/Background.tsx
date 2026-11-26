@@ -1,7 +1,21 @@
-import { background, ellipseYellowTopLanding, ellipsePurpleTopLanding, ellipseRedBottomLanding, ellipseYellowBottomLanding, ellipseYellowTopAuth, ellipsePurpleBottomAuth, ellipseRedBottomAuth, ellipseYellowBottomAuth, ellipseYellowTopCloudCreation, ellipseYellowBottomCloudCreation } from "../styles/components-styles/background.css";
+import {
+    background,
+    ellipseYellowTopLanding,
+    ellipsePurpleTopLanding,
+    ellipseRedBottomLanding,
+    ellipseYellowBottomLanding,
+    ellipseYellowTopAuth,
+    ellipsePurpleBottomAuth,
+    ellipseRedBottomAuth,
+    ellipseYellowBottomAuth,
+    ellipseYellowTopCreator,
+    ellipseYellowBottomCreator,
+    ellipsePinkTopInvitee,
+    ellipsePinkBottomInvitee,
+} from "../styles/components-styles/background.css";
 
 type PageProps = {
-    page: 'landing' | 'auth' | 'cloud-create';
+    page: 'landing' | 'auth' | 'creator' | 'invitee';
 }
 
 const Background = ({ page }: PageProps) => {
@@ -23,11 +37,18 @@ const Background = ({ page }: PageProps) => {
                 <div className={ellipseYellowBottomAuth} />
             </div>
         ) 
-    } else if (page === 'cloud-create') {
+    } else if (page === 'creator') {
         return (
             <div className={background}>
-                <div className={ellipseYellowTopCloudCreation} />
-                <div className={ellipseYellowBottomCloudCreation} />
+                <div className={ellipseYellowTopCreator} />
+                <div className={ellipseYellowBottomCreator} />
+            </div>
+        )
+    } else if (page === 'invitee') {
+        return (
+            <div className={background}>
+                <div className={ellipsePinkTopInvitee} />
+                <div className={ellipsePinkBottomInvitee} />
             </div>
         )
     }

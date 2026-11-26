@@ -12,6 +12,7 @@ import { input, link } from "../../styles/components-styles/common.css";
 import { useNavigate, useSearchParams } from "react-router";
 import { useState } from "react";
 import { AuthError, login } from "../../api/auth";
+import { selectCurrentUser } from "../../state/currentUser";
 
 interface LoginFormValues {
     email: string,
@@ -51,6 +52,7 @@ const Login = () => {
 
             localStorage.setItem('access_token', data.access_token);
             localStorage.setItem('refresh_token', data.refresh_token);
+            selectCurrentUser(values.email);
 
             navigate(returnTo);
         } catch (error: unknown) {

@@ -1,4 +1,5 @@
 import { style } from '@vanilla-extract/css';
+import { typography } from '../tokens/typography.css';
 
 export const filledButton = style({
   background:
@@ -76,10 +77,104 @@ export const outlinedButton = style({
   },
 });
 
+const footerInitial = style({
+  width: '40px',
+  height: '40px',
+  boxSizing: 'border-box',
+  borderRadius: '50%',
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  color: '#FFFFFF',
+  fontFamily: typography.fontFamily.base,
+  fontWeight: typography.fontWeight.bold,
+  fontStyle: 'normal',
+  fontSize: typography.fontSize.lg,
+  lineHeight: '24px',
+  letterSpacing: '0',
+  textDecoration: 'none',
+});
+
 export const footerProfileButton = style([
-  outlinedButton,
+  footerInitial,
   {
-    alignSelf: 'center',
+    padding: 0,
+    border: 0,
+    backgroundColor: '#EA006B',
+    boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)',
+    cursor: 'pointer',
+    selectors: {
+      '&:hover': { backgroundColor: '#EA006B', color: '#FFFFFF' },
+      '&:focus-visible': { outline: '2px solid #FFFFFF', outlineOffset: '2px' },
+    },
+  },
+]);
+
+export const footerYellowProfileButton = style([
+  footerProfileButton,
+  {
+    backgroundColor: '#FAAD14',
+    selectors: {
+      '&:hover': { backgroundColor: '#FAAD14', color: '#FFFFFF' },
+    },
+  },
+]);
+
+export const footerCoupleLink = style({
+  position: 'relative',
+  display: 'block',
+  width: '87px',
+  height: '60px',
+  flexShrink: 0,
+  filter: 'drop-shadow(0 0 5px rgba(0, 0, 0, 0.2))',
+  selectors: {
+    '&:focus-visible': { outline: '2px solid #EA006B', outlineOffset: '2px', borderRadius: '20px' },
+  },
+});
+
+const footerCoupleCircle = style([
+  footerInitial,
+  {
+    position: 'absolute',
+    top: '10px',
+  },
+]);
+
+export const footerCreatorFrontCircle = style([
+  footerCoupleCircle,
+  {
+    left: '10px',
+    zIndex: 2,
+    backgroundColor: '#EA006B',
+  },
+]);
+
+export const footerInviteeBackCircle = style([
+  footerCoupleCircle,
+  {
+    left: '36.6px',
+    zIndex: 1,
+    border: '1px solid #EA006B',
+    backgroundColor: '#FAAD14',
+  },
+]);
+
+export const footerInviteeFrontCircle = style([
+  footerCoupleCircle,
+  {
+    left: '10px',
+    zIndex: 2,
+    backgroundColor: '#FAAD14',
+  },
+]);
+
+export const footerCreatorBackCircle = style([
+  footerCoupleCircle,
+  {
+    left: '36.6px',
+    zIndex: 1,
+    border: '1px solid #FAAD14',
+    backgroundColor: '#EA006B',
   },
 ]);
 
