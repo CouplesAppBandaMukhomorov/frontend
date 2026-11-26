@@ -19,6 +19,8 @@ function App() {
         <div className={themeClass}>
           <Routes>
             <Route path='/' element={<CoupleHome />}/>
+            <Route path='/calendar' element={<CoupleHome section='calendar' />}/>
+            <Route path='/products' element={<CoupleHome section='products' />}/>
             <Route path='/landing' element={<Landing />}/>
             <Route path='/login' element={<Login />}/>
             <Route path='/register' element={<Register />}/>

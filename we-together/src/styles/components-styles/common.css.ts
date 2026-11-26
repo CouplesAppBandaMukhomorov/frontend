@@ -91,6 +91,43 @@ export const pinkFooter = style([
     }
 ]);
 
+export const spaceFooterNavigation = style({
+    width: '100%',
+    maxWidth: '375px',
+    height: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    boxSizing: 'border-box',
+    paddingLeft: '18px',
+    paddingRight: '14px',
+});
+
+export const spaceFooterLink = style({
+    width: '44px',
+    height: '44px',
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexShrink: 0,
+    color: '#7B0038',
+    fontSize: '28px',
+    textDecoration: 'none',
+    selectors: {
+        '&:hover': { color: '#7B0038' },
+        '&:focus-visible': { outline: '2px solid #7B0038', outlineOffset: '2px', borderRadius: '8px' },
+    },
+});
+
+export const spaceFooterProfileSlot = style({
+    width: '87px',
+    height: '60px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexShrink: 0,
+});
+
 export const header = style({
     height: '40px',
     width: '100%',

@@ -1,5 +1,19 @@
 import { useEffect, useState } from 'react';
-import { pinkFooter, yellowFooter } from '../styles/components-styles/common.css';
+import {
+    CalendarFilled,
+    CalendarOutlined,
+    HomeFilled,
+    HomeOutlined,
+    ProductFilled,
+    ProductOutlined,
+} from '@ant-design/icons';
+import {
+    pinkFooter,
+    yellowFooter,
+    spaceFooterNavigation,
+    spaceFooterLink,
+    spaceFooterProfileSlot,
+} from '../styles/components-styles/common.css';
 import {
     footerProfileButton,
     footerYellowProfileButton,
@@ -18,15 +32,19 @@ type FooterProps = {
     role?: CoupleRole;
     displayName?: string;
     members?: Couple['members'];
+    withNavigation?: boolean;
 }
 
 function firstLetter(name: string): string {
     return Array.from(name.trim())[0]?.toLocaleUpperCase('ru-RU') || '?';
 }
 
-const Footer = ({ role, displayName, members }: FooterProps) => {
+const Footer = ({ role, displayName, members, withNavigation = false }: FooterProps) => {
     const navigate = useNavigate();
     const location = useLocation();
+    const isCalendarPage = location.pathname === '/calendar';
+    const isHomePage = location.pathname === '/';
+    const isProductsPage = location.pathname === '/products';
     const [profileName, setProfileName] = useState<string>();
     const isInvitee = role === 'invitee' || (!role && location.pathname === '/cloud/join');
     const name = profileName?.trim() || displayName?.trim() || getRememberedDisplayName() || '';
@@ -53,9 +71,7 @@ const Footer = ({ role, displayName, members }: FooterProps) => {
         navigate('/profile');
     }
 
-    return (
-        <footer className={isInvitee ? yellowFooter : pinkFooter}>
-            {creator && invitee ? (
+    const profileLink = creator && invitee ? (
                 <Link to="/profile" className={footerCoupleLink} aria-label={`Профиль пары: ${creator.display_name} и ${invitee.display_name}`}>
                     <span className={isInvitee ? footerInviteeFrontCircle : footerCreatorFrontCircle}>
                         {firstLetter(isInvitee ? inviteeName : creatorName)}
@@ -73,7 +89,24 @@ const Footer = ({ role, displayName, members }: FooterProps) => {
                 >
                     {firstLetter(name)}
                 </button>
-            )}
+            );
+
+    return (
+        <footer className={isInvitee ? yellowFooter : pinkFooter}>
+            {withNavigation ? (
+                <nav className={spaceFooterNavigation} aria-label="Навигация по пространству">
+                    <Link to="/calendar" className={spaceFooterLink} aria-label="Календарь" aria-current={isCalendarPage ? 'page' : undefined}>
+                        {isCalendarPage ? <CalendarFilled /> : <CalendarOutlined />}
+                    </Link>
+                    <Link to="/" className={spaceFooterLink} aria-label="Главная" aria-current={isHomePage ? 'page' : undefined}>
+                        {isHomePage ? <HomeFilled /> : <HomeOutlined />}
+                    </Link>
+                    <Link to="/products" className={spaceFooterLink} aria-label="Продукты" aria-current={isProductsPage ? 'page' : undefined}>
+                        {isProductsPage ? <ProductFilled /> : <ProductOutlined />}
+                    </Link>
+                    <div className={spaceFooterProfileSlot}>{profileLink}</div>
+                </nav>
+            ) : profileLink}
         </footer>
     );
 };

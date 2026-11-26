@@ -19,7 +19,11 @@ type HomeState =
   | { status: "unauthorized" }
   | { status: "error"; message: string };
 
-const CoupleHome = () => {
+type CoupleHomeProps = {
+  section?: "home" | "calendar" | "products";
+};
+
+const CoupleHome = ({ section = "home" }: CoupleHomeProps) => {
   const { t } = useTranslation("cloud");
   const [state, setState] = useState<HomeState>({ status: "loading" });
   const [retry, setRetry] = useState(0);
@@ -72,18 +76,26 @@ const CoupleHome = () => {
     <div className={page}>
       <Background page={couple.my_role} />
       <Flex vertical align="center" justify="center" gap={16} style={{ minHeight: "100vh", padding: "24px 16px 96px", textAlign: "center" }}>
-        <Title level={1} style={{ margin: 0, fontSize: 28 }}>
-          {second
-            ? t("home.greetingTwo", { first: first.display_name, second: second.display_name })
-            : first
-              ? t("home.greetingOne", { first: first.display_name })
-              : t("home.greeting")}
-        </Title>
-        {second && typeof couple.days_together === "number" && (
-          <Text style={{ fontSize: 20 }}>{t("home.daysTogether", { count: couple.days_together })}</Text>
+        {section === "home" ? (
+          <>
+            <Title level={1} style={{ margin: 0, fontSize: 28 }}>
+              {second
+                ? t("home.greetingTwo", { first: first.display_name, second: second.display_name })
+                : first
+                  ? t("home.greetingOne", { first: first.display_name })
+                  : t("home.greeting")}
+            </Title>
+            {second && typeof couple.days_together === "number" && (
+              <Text style={{ fontSize: 20 }}>{t("home.daysTogether", { count: couple.days_together })}</Text>
+            )}
+          </>
+        ) : (
+          <Title level={1} style={{ margin: 0, fontSize: 28 }}>
+            {t(section === "calendar" ? "home.calendarTitle" : "home.productsTitle")}
+          </Title>
         )}
       </Flex>
-      <Footer role={couple.my_role} displayName={couple.members.find(member => member.role === couple.my_role)?.display_name} members={couple.members} />
+      <Footer role={couple.my_role} displayName={couple.members.find(member => member.role === couple.my_role)?.display_name} members={couple.members} withNavigation />
     </div>
   );
 };

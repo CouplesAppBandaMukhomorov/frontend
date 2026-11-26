@@ -35,6 +35,8 @@
         "daysTogether_few": "Вы вместе {{count}} дня",
         "daysTogether_many": "Вы вместе {{count}} дней",
         "daysTogether_other": "Вы вместе {{count}} дня",
+        "calendarTitle": "Календарь",
+        "productsTitle": "Продукты",
         "retry": "Повторить"
     },
     "join": {
